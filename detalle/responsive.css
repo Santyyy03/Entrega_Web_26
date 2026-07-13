@@ -1,0 +1,1063 @@
+/*==================================================
+                IPHONE 12 PRO
+                390 x 844
+==================================================*/
+
+@media screen and (max-width:430px){
+
+/*==================================================
+                    GENERAL
+==================================================*/
+
+html{
+    overflow-x:hidden;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+section{
+    overflow:hidden;
+}
+
+.container,
+.container2,
+.container3{
+    width:90%;
+    height: auto;
+}
+
+p { 
+    font-size: 14px; 
+}
+
+/*==================================================
+                    HEADER
+==================================================*/
+
+.header{
+
+    padding:18px 0;
+
+}
+
+.nav{
+
+    display:none;
+
+}
+
+.logoimagen{
+
+    width:110px;
+
+}
+
+
+/*==================================================
+                    HERO
+==================================================*/
+
+.hero{
+
+    min-height:100vh;
+    padding:125px 0 60px; 
+    background-image: url(../imagenes/hero/fondomovil.webp);
+    background-size:cover;
+
+    background-position:top right;
+
+    background-repeat:no-repeat;
+
+    width:100%;
+    height:100dvh;
+
+}
+
+.hero .container{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.hero-image{
+
+    opacity: 0; 
+}
+
+.hero-content{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    gap:18px;
+
+}
+
+.section-tag-hero{
+
+    font-size:.72rem;
+    letter-spacing:.18em;
+
+}
+
+.hero-title{
+
+    font-size:2.25rem;  
+    line-height:1.1; 
+    text-align: center;
+
+}
+
+.hero-description{
+
+    width:90%;
+
+    font-size:1rem;
+
+    line-height:1.7;
+    text-align: center;
+
+}
+
+
+.hero .button{
+
+    margin-top:8px;
+
+}
+
+
+/*==================================================
+                    CONCEPTO
+==================================================*/
+
+#concept{
+
+    padding:90px 0;
+
+}
+
+.section-header{
+
+    text-align:center;
+
+}
+
+.section-tag{
+
+    font-size:.75rem;
+    justify-content: center;
+
+
+}
+
+.section-title{
+
+    font-size:2.4rem;
+
+    margin:12px 0 18px;
+
+}
+
+.section-title2{
+
+    font-size:2.4rem;
+
+    margin:12px 0 18px;
+
+}
+
+.section-description{
+
+    width:100%;
+
+    font-size:1rem;
+
+    line-height:1.8;
+
+}
+
+.concept-grid{
+
+    margin-top:60px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+}
+
+.concept-card{
+
+    width:100%;
+
+    padding:34px 26px;
+
+    text-align:center;
+
+}
+
+
+.concept-title-dark{
+
+    margin-top:18px;
+
+    font-size:1.45rem;
+
+}
+
+.concept-text-dark{
+
+    margin-top:12px;
+
+    line-height:1.8;
+
+}
+
+
+/*==================================================
+                    SEPARADOR
+==================================================*/
+
+.separator{
+
+    height: auto;
+
+}
+
+.separator-text{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    text-align:center;
+
+}
+
+.separator-japanese{
+
+    font-size:0.9rem;
+
+}
+
+.separator-spanish{
+
+    font-size:0.80rem;
+
+}
+
+.separator.active .separator-spanish{
+
+    display:block;
+
+}
+
+
+/*==================================================
+                    STATS
+==================================================*/
+
+.stats{
+
+    padding:90px 0;
+
+}
+
+.stats-grid{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+}
+
+.stats-card{
+
+    padding: 24px 20px;
+
+    width:100%;
+
+    text-align:center;
+
+}
+
+.stats-number{
+
+    font-size:3rem;
+
+}
+
+.stats-title{
+
+    margin:14px 0;
+
+}
+
+.stats-text{
+
+    line-height:1.8;
+
+}
+
+
+/*==================================================
+                PERSONALIZACION
+==================================================*/
+
+#customization{
+
+    padding-top:90px;
+
+    padding-bottom: 0;
+
+}
+
+.customization-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:40px;
+
+}
+
+.custom-column{
+
+    display: none;
+
+    order:2;
+
+}
+
+.customization-viewer{
+
+    order:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content: flex-start;
+
+
+}
+
+.customization-circle{
+
+    margin-top: 75px; 
+
+    width:300px;
+
+    height:300px;
+
+}
+
+.customization-image{
+
+    width:350px; 
+
+}
+
+.customization-controls{
+
+    margin-top:26px;
+
+}
+
+.custom-card{
+
+    width:100%;
+
+    text-align:center;
+
+    padding:26px;
+
+}
+
+.custom-card-text{
+
+    display:none;
+
+}
+
+.custom-card-title{
+
+    margin-top:10px;
+
+}
+
+.custom-kanji{
+
+    font-size:1.2rem;
+
+}
+
+.custom-kanji-top {
+
+    top: 50px; 
+    right: 25px;
+
+}
+
+.custom-kanji-bottom {
+
+    bottom: 200px;   
+    left: 25px;
+
+}
+
+/*==================================================
+                FONDO JAPONES
+==================================================*/
+
+.jp-background{
+
+    display:none;
+
+}
+
+/*==================================================
+                TALLADO MOBILE
+==================================================*/
+
+.engraving-section{
+
+    padding-bottom:80px;
+
+}
+
+.engraving-grid{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:40px;
+
+}
+
+.engraving-content{
+
+    width:100%;
+
+    text-align:center;
+
+    align-items: center;
+
+
+}
+
+.section-title2{
+    text-align: center;
+}
+
+.engraving-content .section-tag{
+
+    margin-bottom:10px;
+
+}
+
+.engraving-content .section-title2{
+
+    font-size:2.2rem;
+
+    margin:0;
+
+}
+
+/* Ocultar todo lo demás */
+
+.engraving-description,
+.engraving-footer,
+.wood-kanji{
+
+    display:none;
+
+}
+
+.engraving-viewer{
+
+    width:100%;
+
+    max-width:340px;
+
+    height:420px;
+
+    margin:auto;
+
+}
+
+/*=========================================
+                GALERÍA
+=========================================*/
+
+#gallery{
+    padding: 24px;
+}
+
+#gallery .container2{
+    width:100%;
+}
+
+#gallery .gallery-grid{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+    grid-auto-flow: row;
+
+
+}
+
+/* Todas iguales */
+
+#gallery .gallery-item,
+#gallery .gallery-item.large,
+#gallery .gallery-item.tall{
+
+    grid-column:auto;
+    grid-row:auto;
+    aspect-ratio:1/1;
+
+}
+
+#gallery .gallery-item img{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+
+}
+
+/* La última ocupa el espacio restante */
+
+#gallery .gallery-item-wide{
+
+    grid-column:1 / span 2;
+    grid-row:span 2;
+    aspect-ratio:auto;
+
+}
+
+#gallery .gallery-item-wide img{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+}
+
+
+/*=========================================
+            CAPSULAS
+=========================================*/
+
+#capsule{
+
+    padding:90px 0;
+
+}
+
+#capsule .section-header{
+
+    padding:0 24px;
+
+}
+
+#capsule .capsule-slider{
+
+    margin-top:50px;
+
+}
+
+
+/*=========================================
+                FAQ
+=========================================*/
+
+#faq{
+
+    padding:15px 24px;
+
+}
+
+#faq .faq-list{
+
+    margin-top:50px;
+
+}
+
+#faq .faq-question{
+
+    font-size:1rem;
+
+}
+
+
+
+/*=========================================
+                CONTACTO
+=========================================*/
+
+#contact{
+
+    padding:100px 24px;
+
+}
+
+#contact .contact-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:50px;
+
+}
+
+#contact .contact-content{
+
+    text-align:center;
+
+}
+
+#contact .contact-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+    margin-top:40px;
+
+}
+
+#contact .contact-item{
+
+    text-align:center;
+
+}
+
+#contact .contact-map{
+
+    width:100%;
+
+}
+
+
+/*=========================
+MENU
+=========================*/
+
+.nav{
+
+    display:none;
+
+}
+
+.nav.open{
+
+    display:flex;
+
+    justify-content: center;
+
+}
+
+/*==================================================
+                    OBRAS MOBILE
+==================================================*/
+
+#works{
+
+    overflow:hidden;
+
+}
+
+.works-grid{
+
+    position:relative;
+
+    width:100%;
+
+    height:560px;
+
+    overflow:hidden;
+
+}
+
+.work-card{
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    width:300px;
+
+    height:550px;
+
+    margin:0;
+
+    transition:
+    transform .45s ease,
+    opacity .45s ease;
+
+}
+
+/*==============================
+        CARD CENTRAL
+==============================*/
+
+.work-card.active{
+
+    transform:translate(-50%,-50%) scale(1);
+
+    opacity:1;
+
+    z-index:5;
+
+}
+
+/*==============================
+        IZQUIERDA
+==============================*/
+
+.work-card.prev{
+
+    transform:translate(calc(-50% - 175px),-50%) scale(.82);
+
+    opacity:.45;
+
+    z-index:3;
+
+}
+
+/*==============================
+        DERECHA
+==============================*/
+
+.work-card.next{
+
+    transform:translate(calc(-50% + 175px),-50%) scale(.82);
+
+    opacity:.45;
+
+    z-index:3;
+
+}
+
+/*==============================
+        OCULTAS
+==============================*/
+
+.work-card.hidden{
+
+    display:none;
+
+}
+
+/*==============================
+        SIN FLIP
+==============================*/
+
+.work-card .card-inner{
+
+    transform:none!important;
+
+}
+
+.work-card .card-back{
+
+    display:none;
+
+}
+
+.work-card .card-front{
+
+    position:absolute;
+
+    inset:0;
+
+}
+
+.work-card .card-image{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+/*==================================================
+                    CURSOS - MOBILE
+==================================================*/
+
+.courses-grid {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.course-card{
+
+    width:350px; 
+
+    height:500px;  
+
+    cursor:pointer;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+
+}
+
+.card-content3{
+
+    gap: 10px; 
+
+    padding: 14px;
+
+}
+
+/*==============================
+        SIN FLIP
+==============================*/
+
+.course-card .card-inner{
+
+    transform:none!important;
+
+}
+
+.course-card .card-back{
+
+    display:none;
+
+}
+
+.course-professor-btn{
+
+    display:none;
+
+}
+
+/*detalle*/ 
+
+/*==================================================
+                    NAV MOBILE
+==================================================*/
+
+.header{
+
+    height:72px;
+    padding:0 20px;
+
+}
+
+.header .container{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    height:100%;
+
+}
+
+.logoimagen{
+
+    width:95px;
+
+}
+
+/* ocultamos menú escritorio */
+
+.nav{
+
+    position:fixed;
+
+    top:72px;
+    left:0;
+
+    width:100%;
+
+    background:#110000;
+
+    transform:translateY(-120%);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.35s;
+
+    padding:30px 0;    
+
+}
+
+.nav.active{
+
+    transform:translateY(0);
+
+    opacity:1;
+
+    pointer-events:auto;
+
+}
+
+.nav-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:24px;
+
+}
+
+.nav-link{
+
+    font-size:.95rem;
+
+}
+
+/* botón hamburguesa */
+
+.menu-toggle{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    gap:5px;
+
+    width:50px;
+
+    height:50px;
+
+    cursor:pointer;
+
+    color: #EAE3D5;
+
+}
+
+.menu-toggle span{
+
+    width:100%;
+
+    height:2px;
+
+    background:#F5F2E7;
+
+    transition:.3s;
+
+}
+
+/*==================================================
+                    FOOTER MOBILE
+==================================================*/
+
+.footer{
+
+    padding:60px 25px;
+
+}
+
+.footer .container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+    gap:28px;
+
+}
+
+.pfoot{
+    text-align: left;
+}
+
+.footer-brand{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1.5rem;
+
+    align-items: center;
+
+
+}
+
+
+.footer-nav{
+
+    display:flex;
+
+    flex-direction:row;
+
+    gap:14px;
+
+}
+
+.footer-social{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    flex-direction: row;
+
+
+}
+
+.footer-legal{
+
+    margin-top:10px;
+
+    text-align:center;
+
+}
+
+
+
+}
+

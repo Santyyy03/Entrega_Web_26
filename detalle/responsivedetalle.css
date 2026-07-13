@@ -1,0 +1,365 @@
+@media screen and (max-width:430px){
+    
+.course-hero {
+    background-image: url(../imagenes/hero/detallemovil.webp);
+    background-position:top right;
+
+    background-repeat:no-repeat;
+
+    width:100%;
+    height:100dvh;
+        align-items: flex-start;
+
+}
+
+.hero-content2{
+    margin-top: 50px;
+    margin-inline: 15px;
+        align-items: center;
+
+
+}
+
+.hero-description2{
+
+    width:90%;
+
+    font-size:0.75rem;
+
+    line-height:1.7;
+    text-align: center;
+
+}
+
+.hero-badges{
+    display: none;
+        flex-direction: row;
+
+}
+
+.badge {
+min-width: 100px;}
+
+/*==================================================
+                    SEPARADOR
+==================================================*/
+
+.separator2{
+
+    height: auto;
+
+}
+
+.separator-text2{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    text-align:center;
+
+}
+
+.separator-japanese2{
+
+    font-size:1.5rem; 
+
+}
+
+.separator-spanish2{
+
+    font-size:1.5rem; 
+
+}
+
+.separator.active .separator-spanish{
+
+    display:block;
+
+}
+
+/*==================================================
+                    ESTILO
+==================================================*/
+
+.detail-style{
+
+    padding:70px 20px;
+
+}
+
+.detail-style-content{
+
+    text-align:center;
+    gap: 0;
+
+}
+
+.detail-style-visual{
+
+    position:relative;
+
+    height:360px;
+
+}
+
+.detail-hero-circle{
+
+    width:220px;
+    height:220px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+}
+
+.detail-hero-sofa{
+
+    width:350px;
+
+    left:50%;
+    bottom:0;
+
+    transform:translateX(-50%);
+
+}
+
+.detail-hero-sofa img{
+
+    width:100%;
+
+}
+
+.detail-style-kanji{
+
+    font-size:3rem;
+
+    right: 15px;
+
+}
+
+.detail-style-controls{
+
+    gap:12px;
+
+}
+
+.detail-style-btn{
+
+    width:18px;
+
+    height:18px;
+
+}
+
+/*==================================================
+                    PROGRAMA
+==================================================*/
+
+.course-content{
+
+    padding:70px 20px;
+
+}
+
+.content-grid{
+
+    display:flex;
+    justify-content: center;
+        flex-direction: column;
+        gap: 15px;
+
+}
+
+.content-text{
+
+    display:flex;
+    flex-direction: column;
+    gap: 15px;
+
+
+}
+
+.content-list{
+    display: none;
+}
+
+.content-image{
+
+    width:50%; 
+
+}
+
+.program-gallery{
+
+    width:100%; 
+
+    margin:auto;
+
+    height: 250px;
+
+}
+
+
+.gallery-indicator{
+
+    margin-top:20px;
+
+}
+
+/*==================================================
+                CRONOGRAMA
+==================================================*/
+
+#crono {
+padding-block: 15px;
+}
+
+.course-timeline{
+
+    padding:15px 20px; 
+
+}
+
+.timeline-navigation{
+
+    display:none;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    margin:40px 0;
+
+}
+
+.timeline-track{
+
+    display:none;
+
+}
+
+.timeline-stops{
+
+    display:none;
+
+}
+
+.timeline-stop{
+
+    width:48px;
+
+    height:48px;
+
+}
+
+.timeline-cards{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.timeline-card{
+
+    max-width:360px;
+
+    margin:auto;
+
+}
+
+.timeline-card-inner{
+
+    height:250px;
+
+}
+
+.timeline-front,
+.timeline-back{
+
+    padding:18px; 
+
+}
+
+.timeline-week{
+
+    font-size:1rem;
+
+}
+
+#inscri{
+
+    padding-block: 15px;
+}
+
+.course-features{
+
+    display: grid;
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+.feature-card{
+    max-width: none; 
+    padding: 18px; 
+}
+
+.buy-card{
+    padding: 1rem;
+}
+
+.showcase-label {
+    font-size: .75rem; 
+    text-align: center;
+}
+
+.showcase-label2 {
+    font-size: .75rem; 
+        text-align: center;
+
+}
+
+.showcase-label3 {
+    font-size: .75rem; 
+        text-align: center; 
+
+}
+
+.showcase-grid{
+
+    gap: 1rem;
+}
+
+.showcase-card{
+
+    margin: 0;
+}
+
+
+.showcase-selector {
+ 
+    gap: 5px;  
+}
+
+.selector-item {
+    width: 70px; 
+    height: 70px;
+}
+
+.showcase-info {
+    padding: 15px; 
+}
+
+.feature-card h3 {
+    text-align: center;
+
+}
+
+}

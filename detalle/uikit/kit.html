@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAÍZ — UI Kit</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Yuji+Boku&family=Noto+Serif+JP:wght@400;600;800&display=swap" rel="stylesheet">
+
+<!-- Hojas de estilo reales del proyecto RAÍZ -->
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="detalle.css">
+
+<style>
+
+/* =========================================================
+   CHROME DEL UI KIT — namespaced con prefijo "kit-" para no
+   pisar ninguna clase real del sitio (style.css / detalle.css
+   mandan siempre sobre los componentes documentados)
+========================================================= */
+
+.kit-body{
+    background: var(--color-light);
+}
+
+.kit-shell{
+    display:grid;
+    grid-template-columns: 260px 1fr;
+    align-items:start;
+}
+
+.kit-nav{
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow-y:auto;
+    padding: 40px 24px;
+    border-right: 1px solid rgba(17,0,0,.1);
+    background: var(--color-light);
+}
+
+.kit-nav-brand{
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.kit-nav-sub{
+    font-size: .75rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    opacity: .55;
+    margin-bottom: 32px;
+}
+
+.kit-nav ul{
+    display:flex;
+    flex-direction:column;
+    gap: 4px;
+}
+
+.kit-nav a{
+    display:block;
+    font-size: .88rem;
+    padding: 7px 10px;
+    border-radius: 8px;
+    color: var(--color-dark);
+    opacity:.7;
+    transition: opacity .2s ease, background .2s ease;
+}
+
+.kit-nav a:hover{
+    opacity:1;
+    background: rgba(17,0,0,.06);
+}
+
+.kit-main{
+    padding: 56px 64px 120px;
+    max-width: 1280px;
+}
+
+.kit-hero{
+    margin-bottom: 96px;
+}
+
+.kit-hero-eyebrow{
+    color: var(--color-accent2);
+    font-size: .75rem;
+    font-weight:600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display:block;
+}
+
+.kit-hero h1{
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 4vw, 3.6rem);
+    font-weight:600;
+    line-height:1.05;
+    max-width: 16ch;
+    margin-bottom: 20px;
+}
+
+.kit-hero p{
+    max-width: 62ch;
+    opacity:.75;
+    line-height:1.7;
+    font-size: 1.05rem;
+}
+
+.kit-legend{
+    display:flex;
+    gap:10px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+}
+
+.kit-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:.72rem;
+    font-weight:600;
+    letter-spacing:.06em;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(17,0,0,.15);
+}
+
+.kit-pill i{
+    width:7px; height:7px; border-radius:50%; display:inline-block;
+}
+
+.kit-pill.shared i{ background: var(--color-tertiary); }
+.kit-pill.home i{ background: var(--color-accent2); }
+.kit-pill.detalle i{ background: #2F4656; }
+
+.kit-section{
+    margin-bottom: 104px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(17,0,0,.08);
+    scroll-margin-top: 24px;
+}
+
+.kit-section-head{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap: 24px;
+    margin-bottom: 40px;
+    flex-wrap:wrap;
+}
+
+.kit-section-head h2{
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 2.4vw, 2.4rem);
+    font-weight:600;
+}
+
+.kit-section-head p{
+    max-width: 56ch;
+    opacity:.7;
+    margin-top:8px;
+    font-size:.95rem;
+    line-height:1.6;
+}
+
+.kit-badge{
+    flex-shrink:0;
+    font-size:.68rem;
+    font-weight:700;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    padding: 6px 12px;
+    border-radius:999px;
+    color: var(--color-light);
+    background: var(--color-tertiary);
+    white-space:nowrap;
+}
+
+.kit-badge.home{ background: var(--color-accent2); }
+.kit-badge.detalle{ background: #2F4656; }
+
+.kit-grid{
+    display:grid;
+    gap: 24px;
+}
+
+.kit-grid.cols-2{ grid-template-columns: repeat(2,1fr); }
+.kit-grid.cols-3{ grid-template-columns: repeat(3,1fr); }
+.kit-grid.cols-4{ grid-template-columns: repeat(4,1fr); }
+.kit-grid.cols-5{ grid-template-columns: repeat(5,1fr); }
+
+.kit-card{
+    background: #fff;
+    border: 1px solid rgba(17,0,0,.08);
+    border-radius: 18px;
+    padding: 22px;
+}
+
+.kit-label{
+    font-size: .72rem;
+    font-weight:600;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    opacity:.5;
+    margin-bottom: 10px;
+    display:block;
+}
+
+.kit-demo{
+    background: var(--color-light);
+    border: 1px dashed rgba(17,0,0,.15);
+    border-radius: 20px;
+    padding: 48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap: 24px;
+}
+
+.kit-demo.dark{
+    background: var(--color-dark);
+}
+
+.kit-demo.tight{ padding: 28px; }
+.kit-demo.left{ justify-content:flex-start; }
+.kit-demo.column{ flex-direction:column; align-items:stretch; }
+
+.kit-swatch{
+    border-radius: 16px;
+    overflow:hidden;
+    border: 1px solid rgba(17,0,0,.08);
+}
+
+.kit-swatch-color{
+    height: 88px;
+}
+
+.kit-swatch-meta{
+    padding: 12px 14px;
+    background:#fff;
+}
+
+.kit-swatch-name{
+    font-size:.85rem;
+    font-weight:600;
+}
+
+.kit-swatch-value{
+    font-size:.75rem;
+    opacity:.55;
+    font-family: monospace;
+}
+
+.kit-code{
+    font-family: monospace;
+    font-size:.78rem;
+    background: rgba(17,0,0,.05);
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+.kit-type-row{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(17,0,0,.08);
+}
+
+.kit-type-row:last-child{ border-bottom:none; }
+
+.kit-type-meta{
+    flex-shrink:0;
+    text-align:right;
+    font-size:.75rem;
+    opacity:.55;
+    line-height:1.6;
+}
+
+.kit-space-row{
+    display:flex;
+    align-items:center;
+    gap: 18px;
+    margin-bottom: 12px;
+}
+
+.kit-space-bar{
+    height: 14px;
+    background: var(--color-accent3);
+    border-radius: 4px;
+}
+
+.kit-space-label{
+    width: 150px;
+    font-size:.8rem;
+    font-family: monospace;
+    flex-shrink:0;
+}
+
+.kit-radius-box{
+    width: 90px; height:90px;
+    background: var(--color-accent3);
+}
+
+.kit-shadow-box{
+    width: 100%; height:90px;
+    background:#fff;
+    border-radius: 16px;
+}
+
+.kit-mini-card{ max-width: 320px; width:100%; }
+
+@media (max-width: 1000px){
+    .kit-shell{ grid-template-columns: 1fr; }
+    .kit-nav{ position:static; height:auto; }
+    .kit-main{ padding: 40px 24px 100px; }
+    .kit-grid.cols-2, .kit-grid.cols-3, .kit-grid.cols-4, .kit-grid.cols-5{ grid-template-columns: 1fr 1fr; }
+}
+
+</style>
+</head>
+
+<body class="kit-body">
+
+<div class="kit-shell">
+
+<!-- ============ NAV LATERAL ============ -->
+<nav class="kit-nav">
+    <div class="kit-nav-brand">RAÍZ</div>
+    <div class="kit-nav-sub">UI Kit · v1</div>
+    <ul>
+        <li><a href="#colores">Colores</a></li>
+        <li><a href="#tipografia">Tipografía</a></li>
+        <li><a href="#espaciado">Espaciado</a></li>
+        <li><a href="#bordes-sombras">Bordes &amp; sombras</a></li>
+        <li><a href="#botones">Botones</a></li>
+        <li><a href="#tags">Tags &amp; badges</a></li>
+        <li><a href="#tarjetas">Tarjetas</a></li>
+        <li><a href="#concept">Concept cards</a></li>
+        <li><a href="#stats">Bloques de estadística</a></li>
+        <li><a href="#separadores">Separadores</a></li>
+        <li><a href="#personalizacion">Personalización (color picker)</a></li>
+        <li><a href="#tallado">Slider antes/después</a></li>
+        <li><a href="#galeria">Galería masonry</a></li>
+        <li><a href="#capsulas">Slider de cápsulas</a></li>
+        <li><a href="#programa">Carrusel de programa</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#imagenes">Formas de imagen</a></li>
+        <li><a href="#utilidades">Utilidades &amp; hovers</a></li>
+        <li><a href="#navegacion">Header &amp; footer</a></li>
+        <li><a href="#faq">Acordeón FAQ</a></li>
+        <li><a href="#selector">Selector de color</a></li>
+        <li><a href="#timeline">Cronograma / Timeline</a></li>
+        <li><a href="#compra">Bloque de compra</a></li>
+    </ul>
+</nav>
+
+<!-- ============ CONTENIDO ============ -->
+<main class="kit-main">
+
+    <div class="kit-hero">
+        <span class="kit-hero-eyebrow">静寂 職人 — Design System</span>
+        <h1>UI Kit de RAÍZ</h1>
+        <p>
+            Guía de estilo extraída directamente de <span class="kit-code">style.css</span> y
+            <span class="kit-code">detalle.css</span>. Documenta los tokens y componentes reales
+            del sitio (Home + página de Detalle de curso), señalando qué es compartido entre
+            ambas páginas y qué elementos son exclusivos de cada una.
+        </p>
+        <div class="kit-legend">
+            <span class="kit-pill shared"><i></i> Compartido (Home + Detalle)</span>
+            <span class="kit-pill home"><i></i> Solo Home</span>
+            <span class="kit-pill detalle"><i></i> Solo Detalle</span>
+        </div>
+    </div>
+
+    <!-- ============================================================
+                                COLORES
+    ============================================================= -->
+    <section id="colores" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Paleta de color</h2>
+                <p>Variables definidas en <span class="kit-code">:root</span> de style.css. Paleta cálida y terrosa inspirada en madera y wabi-sabi, con un acento coral (accent) y tres rojos/negros profundos para fondos oscuros.</p>
+            </div>
+            <span class="kit-badge">Compartido</span>
+        </div>
+
+        <div class="kit-grid cols-5" style="margin-bottom:20px;">
+            <div class="kit-swatch">
+                <div class="kit-swatch-color" style="background:#EAE3D5"></div>
+                <div class="kit-swatch-meta">
+                    <div class="kit-swatch-name">color-light</div>
+                    <div class="kit-swatch-value">#EAE3D5</div>
+                </div>
+            </div>
+            <div class="kit-swatch">
+                <div class="kit-swatch-color" style="background:#110000"></div>
+                <div class="kit-swatch-meta">
+                    <div class="kit-swatch-name">color-dark</div>
+                    <div class="kit-swatch-value">#110000</div>
+                </div>
+            </div>
+            <div class="kit-swatch">
+                <div class="kit-swatch-color" style="background:#e7d9c0"></div>
+                <div class="kit-swatch-meta">
+                    <div class="kit-swatch-name">color-primary</div>
+                    <div class="kit-swatch-value">#e7d9c0</div>
+                </div>
+            </div>
+            <div class="kit-swatch">
+                <div class="kit-swatch-color" style="background:#A7846A"></div>
+                <div class="kit-swatch-meta">
+                    <div class="kit-swatch-name">color-secondary</div>
+                    <div class="kit-swatch-value">#A7846A</div>
+                </div>
+            </div>
+            <div class="kit-swatch">
+                <div class="kit-swatch-color" style="background:#4A392D"></div>
+                <div class="kit-swatch-meta">
+                    <div class="kit-swatch-name">color-tertiary</div>
+                    <div class="kit-swatch-value">#4A392D</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="kit-grid cols-5" style="margin-bottom:20px;">
+            <div class="kit-swatch">
+                <div class="kit-swatch-color" style="background:#FF6A4F"></div>
+                <div class="kit-swatch-meta">
+                    <div class="kit-swatch-name">color-accent</div>
+                    <div class="kit-swatch-value">#FF6A4F</div>
+                </div>
+            </div>
+            <div class="kit-swatch">
+                <div class="kit-swatch-color" style="background:#E00000"></div>
+                <div class="kit-swatch-meta">
+                    <div class="kit-swatch-name">color-accent2</div>
+                    <div class="kit-swatch-value">#E00000</div>
+                </div>
+            </div>
+            <div class="kit-swatch">
+                <div class="kit-swatch-color" style="background:#40040A"></div>
+                <div class="kit-swatch-meta">
+                    <div class="kit-swatch-name">color-accent3</div>
+                    <div class="kit-swatch-value">#40040A</div>
+                </div>
+            </div>
+            <div class="kit-swatch">
+                <div class="kit-swatch-color" style="background:#1F1E1D"></div>
+                <div class="kit-swatch-meta">
+                    <div class="kit-swatch-name">color-black</div>
+                    <div class="kit-swatch-value">#1F1E1D</div>
+                </div>
+            </div>
+            <div class="kit-swatch">
+                <div class="kit-swatch-color" style="background:rgba(245,242,231,.45); backdrop-filter:blur(4px);"></div>
+                <div class="kit-swatch-meta">
+                    <div class="kit-swatch-name">glass / glass-border</div>
+                    <div class="kit-swatch-value">rgba(245,242,231,.22)</div>
+                </div>
+            </div>
+        </div>
+
+        <span class="kit-label" style="margin-top:12px;">Paleta de personalización (usada en detalle.js para sillones / tapizados)</span>
+        <div class="kit-grid cols-4">
+            <div class="kit-swatch">
+                <div class="kit-swatch-color" style="background:#562F2F"></div>
+                <div class="kit-swatch-meta">
+                    <div class="kit-swatch-name">Rojo tierra (赤色)</div>
+                    <div class="kit-swatch-value">#562F2F</div>
+                </div>
+            </div>
+            <div class="kit-swatch">
+                <div class="kit-swatch-color" style="background:#2F4656"></div>
+                <div class="kit-swatch-meta">
+                    <div class="kit-swatch-name">Azul (青色)</div>
+                    <div class="kit-swatch-value">#2F4656</div>
+                </div>
+            </div>
+            <div class="kit-swatch">
+                <div class="kit-swatch-color" style="background:#35562F"></div>
+                <div class="kit-swatch-meta">
+                    <div class="kit-swatch-name">Verde (緑色)</div>
+                    <div class="kit-swatch-value">#35562F</div>
+                </div>
+            </div>
+            <div class="kit-swatch">
+                <div class="kit-swatch-color" style="background:#FF6A4F"></div>
+                <div class="kit-swatch-meta">
+                    <div class="kit-swatch-name">Default (家具)</div>
+                    <div class="kit-swatch-value">#FF6A4F</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                                TIPOGRAFÍA
+    ============================================================= -->
+    <section id="tipografia" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Tipografía</h2>
+                <p>Tres familias con roles definidos: display para títulos, japonesa para acentos culturales, e Inter para texto de cuerpo.</p>
+            </div>
+            <span class="kit-badge">Compartido</span>
+        </div>
+
+        <div class="kit-grid cols-3" style="margin-bottom:40px;">
+            <div class="kit-card">
+                <span class="kit-label">--font-display</span>
+                <div style="font-family:'EB Garamond', serif; font-size:2.2rem; font-weight:600;">EB Garamond</div>
+                <div style="opacity:.6; font-size:.85rem; margin-top:6px;">Serif · títulos, hero, cards</div>
+            </div>
+            <div class="kit-card">
+                <span class="kit-label">--font-japanese</span>
+                <div style="font-family:'Yuji Boku', serif; font-size:2.2rem;">静寂 職人</div>
+                <div style="opacity:.6; font-size:.85rem; margin-top:6px;">Acentos, kanjis decorativos</div>
+            </div>
+            <div class="kit-card">
+                <span class="kit-label">--font-body</span>
+                <div style="font-family:'Inter', sans-serif; font-size:1.3rem;">Inter</div>
+                <div style="opacity:.6; font-size:.85rem; margin-top:6px;">Sans · texto de cuerpo, UI</div>
+            </div>
+        </div>
+
+        <div class="kit-card">
+            <div class="kit-type-row">
+                <div class="hero-title" style="font-size:3.4rem;">Tradición que inspira</div>
+                <div class="kit-type-meta">.hero-title<br>clamp(4rem,5vw,5rem) · 600</div>
+            </div>
+            <div class="kit-type-row">
+                <div class="section-title" style="font-size:2.6rem; text-align:left;">Esencia y forma</div>
+                <div class="kit-type-meta">.section-title<br>clamp(3rem,4vw,4.5rem) · 500</div>
+            </div>
+            <div class="kit-type-row">
+                <div class="card-title">Almacén de memorias</div>
+                <div class="kit-type-meta">.card-title<br>1.75rem · 500</div>
+            </div>
+            <div class="kit-type-row">
+                <div style="font-size:1rem;">Texto de cuerpo regular, usado en párrafos y descripciones generales del sitio.</div>
+                <div class="kit-type-meta">body / .card-description<br>1rem · 400</div>
+            </div>
+            <div class="kit-type-row">
+                <div class="section-tag" style="color:var(--color-dark);">Filosofía</div>
+                <div class="kit-type-meta">.section-tag<br>.75rem · 600 · uppercase · tracking .18em</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                                ESPACIADO
+    ============================================================= -->
+    <section id="espaciado" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Espaciado</h2>
+                <p>Escala de espaciado en base 8, de --space-8 a --space-128.</p>
+            </div>
+            <span class="kit-badge">Compartido</span>
+        </div>
+
+        <div class="kit-card">
+            <div class="kit-space-row"><span class="kit-space-label">--space-8 · 8px</span><div class="kit-space-bar" style="width:8px;"></div></div>
+            <div class="kit-space-row"><span class="kit-space-label">--space-16 · 16px</span><div class="kit-space-bar" style="width:16px;"></div></div>
+            <div class="kit-space-row"><span class="kit-space-label">--space-24 · 24px</span><div class="kit-space-bar" style="width:24px;"></div></div>
+            <div class="kit-space-row"><span class="kit-space-label">--space-32 · 32px</span><div class="kit-space-bar" style="width:32px;"></div></div>
+            <div class="kit-space-row"><span class="kit-space-label">--space-48 · 48px</span><div class="kit-space-bar" style="width:48px;"></div></div>
+            <div class="kit-space-row"><span class="kit-space-label">--space-64 · 64px</span><div class="kit-space-bar" style="width:64px;"></div></div>
+            <div class="kit-space-row"><span class="kit-space-label">--space-96 · 96px</span><div class="kit-space-bar" style="width:96px;"></div></div>
+            <div class="kit-space-row" style="margin-bottom:0;"><span class="kit-space-label">--space-128 · 128px</span><div class="kit-space-bar" style="width:128px;"></div></div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                          BORDES Y SOMBRAS
+    ============================================================= -->
+    <section id="bordes-sombras" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Bordes &amp; sombras</h2>
+                <p>Radios y elevaciones usados en cards, botones y componentes flotantes.</p>
+            </div>
+            <span class="kit-badge">Compartido</span>
+        </div>
+
+        <div class="kit-grid cols-4" style="margin-bottom:32px;">
+            <div class="kit-card" style="text-align:center;">
+                <div class="kit-radius-box" style="border-radius:16px; margin:0 auto 12px;"></div>
+                <span class="kit-code">--radius-sm · 16px</span>
+            </div>
+            <div class="kit-card" style="text-align:center;">
+                <div class="kit-radius-box" style="border-radius:24px; margin:0 auto 12px;"></div>
+                <span class="kit-code">--radius-md · 24px</span>
+            </div>
+            <div class="kit-card" style="text-align:center;">
+                <div class="kit-radius-box" style="border-radius:32px; margin:0 auto 12px;"></div>
+                <span class="kit-code">--radius-lg · 32px</span>
+            </div>
+            <div class="kit-card" style="text-align:center;">
+                <div class="kit-radius-box" style="border-radius:999px; margin:0 auto 12px;"></div>
+                <span class="kit-code">--radius-full · pill</span>
+            </div>
+        </div>
+
+        <div class="kit-grid cols-3">
+            <div class="kit-card" style="text-align:center;">
+                <div class="kit-shadow-box" style="box-shadow:0 6px 40px rgba(0,0,0,.08); margin-bottom:12px;"></div>
+                <span class="kit-code">--shadow-sm</span>
+            </div>
+            <div class="kit-card" style="text-align:center;">
+                <div class="kit-shadow-box" style="box-shadow:0 16px 80px rgba(0,0,0,.12); margin-bottom:12px;"></div>
+                <span class="kit-code">--shadow-md</span>
+            </div>
+            <div class="kit-card" style="text-align:center;">
+                <div class="kit-shadow-box" style="box-shadow:0 30px 100px rgba(0,0,0,.18); margin-bottom:12px;"></div>
+                <span class="kit-code">--shadow-lg</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                                BOTONES
+    ============================================================= -->
+    <section id="botones" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Botones</h2>
+                <p>Clase base <span class="kit-code">.button</span> + modificador. Radio full, altura fija 56px.</p>
+            </div>
+            <span class="kit-badge">Compartido</span>
+        </div>
+
+        <div class="kit-demo">
+            <div>
+                <span class="kit-label">.button .button-primary</span>
+                <button class="button button-primary">Ver cursos</button>
+            </div>
+            <div>
+                <span class="kit-label">.button .button-secondary</span>
+                <button class="button button-secondary">Ver curso</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                            TAGS Y BADGES
+    ============================================================= -->
+    <section id="tags" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Tags &amp; badges</h2>
+                <p><span class="kit-code">.section-tag</span> / <span class="kit-code">.card-tag</span> son compartidos. <span class="kit-code">.badge</span> (con label + valor) es exclusivo de la página de Detalle.</p>
+            </div>
+            <span class="kit-badge">Mixto</span>
+        </div>
+
+        <div class="kit-demo left" style="margin-bottom:16px;">
+            <div>
+                <span class="kit-label">.section-tag</span>
+                <span class="section-tag" style="color:var(--color-dark);">Filosofía</span>
+            </div>
+            <div>
+                <span class="kit-label">.card-tag</span>
+                <span class="card-tag" style="color:var(--color-dark);">Kioku no Kura</span>
+            </div>
+        </div>
+
+        <span class="kit-label">.badge <span class="kit-pill detalle" style="margin-left:6px;"><i></i>Solo Detalle</span></span>
+        <div class="kit-demo dark left">
+            <div class="badge">
+                <span>Duración</span>
+                <strong>5 semanas</strong>
+            </div>
+            <div class="badge">
+                <span>Nivel</span>
+                <strong>Inicial</strong>
+            </div>
+            <div class="badge">
+                <span>Modalidad</span>
+                <strong>Presencial</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                                TARJETAS
+    ============================================================= -->
+    <section id="tarjetas" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Tarjetas</h2>
+                <p>El sistema base <span class="kit-code">.card / .card-inner / .card-front / .card-back</span> es compartido y soporta flip 3D con <span class="kit-code">.is-flipped</span>. Cada contexto agrega su propia variante.</p>
+            </div>
+            <span class="kit-badge">Mixto</span>
+        </div>
+
+        <span class="kit-label">.card.work-card — Home, sección Obras <span class="kit-pill home" style="margin-left:6px;"><i></i>Solo Home</span></span>
+        <div class="kit-demo tight" style="margin-bottom:32px;">
+            <article class="card work-card kit-mini-card" style="height:420px;" data-work="1" id="kit-work-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <span class="card-number jp-wordcard">一</span>
+                        <img class="card-image" src="https://santyyy03.github.io/Tp02Web/imagenes/muebles/viejos/armario_viejo.webp" alt="">
+                        <div class="card-overlay"></div>
+                        <div class="card-content">
+                            <span class="card-tag">Kioku no Kura</span>
+                            <h3 class="card-title">Almacén de memorias</h3>
+                            <p class="card-subtitle">Renacer y función</p>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <span class="card-number">01</span>
+                        <span class="card-tag">Kioku no Kura</span>
+                        <h3 class="card-title">Almacén de memorias</h3>
+                        <p class="card-subtitle">Renacer y función</p>
+                        <p class="card-description2">Un armario sólido que guarda la memoria de lo antiguo y se reinventa con planos claros.</p>
+                    </div>
+                </div>
+            </article>
+            <button class="button button-secondary" onclick="document.getElementById('kit-work-card').classList.toggle('is-flipped')">Girar tarjeta (hover en el sitio real)</button>
+        </div>
+
+        <span class="kit-label">.card.course-card — Home, sección Cursos (frente/dorso con profesor) <span class="kit-pill home" style="margin-left:6px;"><i></i>Solo Home</span></span>
+        <div class="kit-demo tight" style="margin-bottom:32px;">
+            <article class="card course-card kit-mini-card" style="height:460px;" data-course="1" id="kit-course-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="course-image-wrapper">
+                            <img class="card-image course-image" src="https://santyyy03.github.io/Tp02Web/imagenes/fotocursos/curso_1.png" alt="Curso inicial">
+                        </div>
+                        <div class="card-overlay"></div>
+                        <div class="card-content3">
+                            <span class="card-tag">Restauración</span>
+                            <h3 class="card-title">Diseñá la atmósfera</h3>
+                            <p class="card-subtitle">Almacenamiento y lámparas que cobran vida con color y rejillas japonesas.</p>
+                            <div class="course-extra">
+                                <ul><li class="listacartas">Explorás técnicas de tallado artesanal.</li></ul>
+                                <h4>$95.000 ARS</h4>
+                                <button class="button button-secondary">Ver curso</button>
+                                <button class="course-professor-btn" type="button">Profesor ▶</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-back course-professor-back course-professor-image-wrapper">
+                        <img src="https://santyyy03.github.io/Tp02Web/imagenes/fotocursos/profe_1.png" alt="Martín Sato" class="course-professor-image">
+                        <div class="card-texto-atras">
+                            <h3 class="course-professor-name">Martín Sato</h3>
+                            <p class="course-professor-speciality">Restauración de madera</p>
+                            <p class="course-professor-description">Especialista en restauración de muebles y acabados mate.</p>
+                            <button class="course-professor-return" type="button">◀ Volver al curso</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <button class="button button-secondary" onclick="document.getElementById('kit-course-card').classList.toggle('is-flipped')">Girar tarjeta</button>
+        </div>
+
+        <span class="kit-label">.stat-card &amp; .feature-card — Detalle <span class="kit-pill detalle" style="margin-left:6px;"><i></i>Solo Detalle</span></span>
+        <div class="kit-grid cols-3" style="margin-bottom:32px;">
+            <article class="stat-card kit-card" style="text-align:center;">
+                <span class="stats-number">5</span>
+                <span class="stats-line"></span>
+                <p class="stats-text2">Semanas intensivas de aprendizaje.</p>
+            </article>
+            <article class="feature-card kit-card">
+                <span class="feature-kanji">時</span>
+                <h3>Ritmo del aprendizaje</h3>
+                <p class="section-description">Cinco encuentros presenciales de dos horas cada uno.</p>
+            </article>
+            <article class="course-preview-card kit-card" style="padding:0; overflow:hidden;">
+                <img src="https://santyyy03.github.io/Tp02Web/imagenes/fotocursos/curso_3.png" alt="Curso tallado" style="height:160px;">
+                <div class="course-preview-content" style="padding:16px;">
+                    <span class="section-tag-otro">Tallado</span>
+                    <h3>Tallado con carácter</h3>
+                    <p>Grabado artesanal sobre madera.</p>
+                    <a href="#">Ver curso →</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                            CONCEPT CARDS
+    ============================================================= -->
+    <section id="concept" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Concept cards</h2>
+                <p><span class="kit-code">.concept-card</span> con <span class="kit-code">.concept-japanese.concept-icon</span>. Viven dentro de <span class="kit-code">.section-dark</span> (fondo <span class="kit-code">--color-accent3</span>) en la sección "Esencia y forma" del Home.</p>
+            </div>
+            <span class="kit-badge home">Solo Home</span>
+        </div>
+
+        <div class="section section-dark kit-demo dark" style="border-radius:20px; padding:48px 32px;">
+            <div class="concept-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; width:100%;">
+                <article class="concept-card reveal is-visible">
+                    <span class="concept-japanese concept-icon">簡</span>
+                    <h3 class="concept-title-dark">Diseño limpio</h3>
+                    <p class="concept-text-dark">Eliminamos lo innecesario para que cada pieza exprese su única y verdadera esencia.</p>
+                </article>
+                <article class="concept-card reveal is-visible">
+                    <span class="concept-japanese concept-icon">色</span>
+                    <h3 class="concept-title-dark">Color esencial</h3>
+                    <p class="concept-text-dark">Tonos inspirados en la naturaleza japonesa para transmitir calma y equilibrio.</p>
+                </article>
+                <article class="concept-card reveal is-visible">
+                    <span class="concept-japanese concept-icon">形</span>
+                    <h3 class="concept-title-dark">Geometría viva</h3>
+                    <p class="concept-text-dark">Patrones tradicionales reinterpretados para crear muebles únicos.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                        BLOQUES DE ESTADÍSTICA
+    ============================================================= -->
+    <section id="stats" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Bloques de estadística</h2>
+                <p>Home usa <span class="kit-code">.glass-card.stats-card</span> con <span class="kit-code">.stats-number / .stats-title / .stats-text</span>. Detalle reutiliza <span class="kit-code">.stats-number</span> pero dentro de <span class="kit-code">.stat-card</span> con <span class="kit-code">.stats-text2</span> (ya visto en Tarjetas).</p>
+            </div>
+            <span class="kit-badge home">Solo Home</span>
+        </div>
+
+        <div class="kit-grid cols-3">
+            <article class="glass-card stats-card kit-card" style="text-align:center;">
+                <h2 class="stats-number">100%</h2>
+                <h3 class="stats-title">ARTESANAL</h3>
+                <p class="stats-text">Cada restauración se realiza completamente de forma manual.</p>
+            </article>
+            <article class="glass-card stats-card kit-card" style="text-align:center;">
+                <h2 class="stats-number">+250</h2>
+                <h3 class="stats-title">MUEBLES</h3>
+                <p class="stats-text">Piezas recuperadas y transformadas con una nueva identidad.</p>
+            </article>
+            <article class="glass-card stats-card kit-card" style="text-align:center;">
+                <h2 class="stats-number">+15</h2>
+                <h3 class="stats-title">COLECCIONES</h3>
+                <p class="stats-text">Diseños inspirados en la estética japonesa contemporánea.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                            SEPARADORES
+    ============================================================= -->
+    <section id="separadores" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Separadores con cita japonesa</h2>
+                <p>Franja centrada con texto en japonés + traducción. <span class="kit-code">.separator</span> es de Home, <span class="kit-code">.separator2</span> es la variante de Detalle (mismo patrón, distinto namespace de clases).</p>
+            </div>
+            <span class="kit-badge">Mixto</span>
+        </div>
+
+        <span class="kit-label">.separator <span class="kit-pill home" style="margin-left:6px;"><i></i>Home</span></span>
+        <section class="separator" style="position:relative; border-radius:20px; overflow:hidden; margin-bottom:24px;">
+            <div class="container">
+                <div class="separator-text">
+                    <span class="separator-japanese">静けさは木の声を聞かせ、家具に新しい命を宿します。</span>
+                    <span class="separator-spanish">La serenidad deja oír la voz de la madera y otorga nueva vida a los muebles.</span>
+                </div>
+            </div>
+        </section>
+
+        <span class="kit-label">.separator2 <span class="kit-pill detalle" style="margin-left:6px;"><i></i>Detalle</span></span>
+        <section class="separator2" style="position:relative; border-radius:20px; overflow:hidden;">
+            <div class="container">
+                <div class="separator-text2">
+                    <span class="separator-japanese2">色は空間に命を与える。</span>
+                    <span class="separator-spanish2">El color da vida a los espacios.</span>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- ============================================================
+                        PERSONALIZACIÓN / COLOR PICKER
+    ============================================================= -->
+    <section id="personalizacion" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Personalización (color picker)</h2>
+                <p><span class="kit-code">.custom-card</span> (glass) para las 4 fichas descriptivas + <span class="kit-code">.customization-viewer</span> con <span class="kit-code">.customization-circle</span>, kanjis flotantes y <span class="kit-code">.color-button</span>.</p>
+            </div>
+            <span class="kit-badge home">Solo Home</span>
+        </div>
+
+        <div class="kit-grid cols-4" style="margin-bottom:24px;">
+            <article class="glass-card custom-card kit-card">
+                <span class="custom-card-label">Acabado</span>
+                <h3 class="custom-card-title">Madera Natural</h3>
+                <p class="custom-card-text">Terminación mate que conserva la textura de la madera.</p>
+            </article>
+            <article class="glass-card custom-card kit-card">
+                <span class="custom-card-label">Paleta</span>
+                <h3 class="custom-card-title">Rojo tierra</h3>
+                <p class="custom-card-text">Un tono profundo que evoca fuerza y carácter artesanal.</p>
+            </article>
+            <article class="glass-card custom-card kit-card">
+                <span class="custom-card-label">Tapizado</span>
+                <h3 class="custom-card-title">Patrón Kikkō</h3>
+                <p class="custom-card-text">Inspirado en el caparazón de la tortuga japonesa.</p>
+            </article>
+            <article class="glass-card custom-card kit-card">
+                <span class="custom-card-label">Personalidad</span>
+                <h3 class="custom-card-title">Serenidad</h3>
+                <p class="custom-card-text">Una pieza que transmite equilibrio y elegancia.</p>
+            </article>
+        </div>
+
+        <span class="kit-label">.customization-viewer + .color-button</span>
+        <div class="kit-demo tight" style="position:relative;">
+            <div class="customization-viewer" style="position:relative; width:280px; height:340px;">
+                <span class="custom-kanji custom-kanji-top">赤色</span>
+                <span class="custom-kanji custom-kanji-bottom">静か</span>
+                <div class="customization-circle"></div>
+                <img src="https://santyyy03.github.io/Tp02Web/imagenes/muebles/azul/silla_azul_1.png" alt="Silla personalizada" class="customization-image">
+                <div class="customization-controls">
+                    <button class="color-button active" data-color="blue" aria-label="azul"></button>
+                    <button class="color-button" data-color="red" aria-label="rojo"></button>
+                    <button class="color-button" data-color="gold" aria-label="dorado"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                    SLIDER ANTES / DESPUÉS (TALLADO)
+    ============================================================= -->
+    <section id="tallado" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Slider antes / después</h2>
+                <p><span class="kit-code">.engraving-viewer</span>: dos imágenes superpuestas (<span class="kit-code">.engraving-before/.engraving-after</span>) con <span class="kit-code">clip-path</span> y un <span class="kit-code">.engraving-handle</span> arrastrable. Sección "Detalle artesanal" del Home.</p>
+            </div>
+            <span class="kit-badge home">Solo Home</span>
+        </div>
+
+        <div class="kit-demo tight">
+            <div class="engraving-viewer" style="width:320px; height:360px;">
+                <img class="engraving-before" src="https://santyyy03.github.io/Tp02Web/imagenes/fotocursos/tallado_antes.jpg" alt="Antes">
+                <div class="engraving-reveal">
+                    <img class="engraving-after" src="https://santyyy03.github.io/Tp02Web/imagenes/fotocursos/tallado_desp.jpg" alt="Después" style="clip-path:inset(0 0 45% 0);">
+                </div>
+                <div class="engraving-line"></div>
+                <button class="engraving-handle" type="button">
+                    <span class="arrow-up">▲</span>
+                    <span class="arrow-down">▼</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                            GALERÍA MASONRY
+    ============================================================= -->
+    <section id="galeria" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Galería masonry</h2>
+                <p><span class="kit-code">.gallery-item</span> con modificadores <span class="kit-code">.large / .wide / .tall</span> que cambian el <span class="kit-code">grid-column/row-span</span> dentro de <span class="kit-code">.gallery-grid</span>.</p>
+            </div>
+            <span class="kit-badge home">Solo Home</span>
+        </div>
+
+        <div class="gallery-grid" style="display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:110px; gap:12px;">
+            <figure class="gallery-item large" style="grid-column:span 2; grid-row:span 2; border-radius:16px; overflow:hidden;">
+                <img class="gallery-image" src="https://santyyy03.github.io/Tp02Web/imagenes/fotogaleria/gale_1.webp" alt="">
+            </figure>
+            <figure class="gallery-item" style="border-radius:16px; overflow:hidden;">
+                <img class="gallery-image" src="https://santyyy03.github.io/Tp02Web/imagenes/fotogaleria/gale_2.webp" alt="">
+            </figure>
+            <figure class="gallery-item tall" style="grid-row:span 2; border-radius:16px; overflow:hidden;">
+                <img class="gallery-image" src="https://santyyy03.github.io/Tp02Web/imagenes/fotogaleria/gale_3.webp" alt="">
+            </figure>
+            <figure class="gallery-item wide" style="grid-column:span 2; border-radius:16px; overflow:hidden;">
+                <img class="gallery-image" src="https://santyyy03.github.io/Tp02Web/imagenes/fotogaleria/gale_4.webp" alt="">
+            </figure>
+            <figure class="gallery-item" style="border-radius:16px; overflow:hidden;">
+                <img class="gallery-image" src="https://santyyy03.github.io/Tp02Web/imagenes/fotogaleria/gale_6.webp" alt="">
+            </figure>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                            SLIDER DE CÁPSULAS
+    ============================================================= -->
+    <section id="capsulas" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Slider de cápsulas</h2>
+                <p><span class="kit-code">.capsule-slider</span> con <span class="kit-code">.capsule-track</span> (scroll horizontal) y <span class="kit-code">.capsule-image</span>, para la colección de ediciones limitadas.</p>
+            </div>
+            <span class="kit-badge home">Solo Home</span>
+        </div>
+
+        <div class="capsule-slider">
+            <div class="capsule-track" style="display:flex; gap:16px; overflow-x:auto; padding-bottom:8px;">
+                <img src="https://santyyy03.github.io/Tp02Web/imagenes/muebles/capsula/capsula_1.png" alt="" class="capsule-image" style="width:180px; flex-shrink:0; border-radius:14px;">
+                <img src="https://santyyy03.github.io/Tp02Web/imagenes/muebles/capsula/capsula_2.png" alt="" class="capsule-image" style="width:180px; flex-shrink:0; border-radius:14px;">
+                <img src="https://santyyy03.github.io/Tp02Web/imagenes/muebles/capsula/capsula_3.png" alt="" class="capsule-image" style="width:180px; flex-shrink:0; border-radius:14px;">
+                <img src="https://santyyy03.github.io/Tp02Web/imagenes/muebles/capsula/capsula_4.png" alt="" class="capsule-image" style="width:180px; flex-shrink:0; border-radius:14px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                        CARRUSEL DE PROGRAMA
+    ============================================================= -->
+    <section id="programa" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Carrusel de programa</h2>
+                <p><span class="kit-code">.program-item</span> (lista clickeable con check/guión) sincronizada con <span class="kit-code">.program-card</span> (imágenes en profundidad: <span class="kit-code">.active/.prev/.next/.hidden</span>) y <span class="kit-code">.gallery-dot</span>.</p>
+            </div>
+            <span class="kit-badge detalle">Solo Detalle</span>
+        </div>
+
+        <div class="kit-grid cols-2">
+            <ul class="content-list" style="display:flex; flex-direction:column; gap:4px;">
+                <li class="program-item active" data-program="1"><span class="program-icon">✓</span><span>Preparación y restauración de la madera.</span></li>
+                <li class="program-item" data-program="2"><span class="program-icon">−</span><span>Técnicas de pintura y aplicación.</span></li>
+                <li class="program-item" data-program="3"><span class="program-icon">−</span><span>Protección y acabados finales.</span></li>
+                <li class="program-item" data-program="4"><span class="program-icon">−</span><span>Selección de telas y materiales.</span></li>
+            </ul>
+            <div class="program-gallery" style="position:relative; height:220px;">
+                <div class="program-card active" data-program="1">
+                    <img src="https://santyyy03.github.io/Tp02Web/imagenes/fotogaleria/gale_8.webp" alt="">
+                </div>
+                <div class="gallery-indicator">
+                    <span class="gallery-dot active"></span>
+                    <span class="gallery-dot"></span>
+                    <span class="gallery-dot"></span>
+                    <span class="gallery-dot"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                                CONTACTO
+    ============================================================= -->
+    <section id="contacto" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Contacto</h2>
+                <p><span class="kit-code">.contact-item</span> (título + texto) junto a <span class="kit-code">.contact-map / .map-placeholder</span>.</p>
+            </div>
+            <span class="kit-badge home">Solo Home</span>
+        </div>
+
+        <div class="kit-grid cols-2">
+            <div class="kit-card">
+                <div class="contact-item" style="margin-bottom:20px;">
+                    <h3>Dirección</h3>
+                    <p>Buenos Aires, Argentina</p>
+                </div>
+                <div class="contact-item" style="margin-bottom:20px;">
+                    <h3>Correo</h3>
+                    <p>contacto@raiz.com</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Horarios</h3>
+                    <p>Lunes a Viernes · 09:00–18:00</p>
+                </div>
+            </div>
+            <div class="contact-map kit-card" style="display:flex; align-items:center; justify-content:center; min-height:180px; background:var(--color-tertiary); color:var(--color-light);">
+                map-placeholder (imagen / iframe de mapa)
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                        FORMAS DE IMAGEN
+    ============================================================= -->
+    <section id="imagenes" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Formas de imagen</h2>
+                <p>Todas las <span class="kit-code">img</span> usan <span class="kit-code">object-fit:cover</span> (reset global). El "shape" real lo define el contenedor: rectángulo con radio de card, círculo (viewer de personalización), o full-bleed sin radio (hero / engraving-viewer).</p>
+            </div>
+            <span class="kit-badge">Compartido</span>
+        </div>
+
+        <div class="kit-grid cols-4">
+            <div style="text-align:center;">
+                <img src="https://santyyy03.github.io/Tp02Web/imagenes/fotocursos/curso_1.png" style="width:100%; height:140px; object-fit:cover; border-radius:24px;">
+                <span class="kit-label" style="margin-top:8px;">--radius-md (cards)</span>
+            </div>
+            <div style="text-align:center;">
+                <img src="https://santyyy03.github.io/Tp02Web/imagenes/fotocursos/curso_2.png" style="width:100%; height:140px; object-fit:cover; border-radius:999px;">
+                <span class="kit-label" style="margin-top:8px;">circular (customization-image)</span>
+            </div>
+            <div style="text-align:center;">
+                <img src="https://santyyy03.github.io/Tp02Web/imagenes/fotocursos/curso_3.png" style="width:100%; height:140px; object-fit:cover; border-radius:0;">
+                <span class="kit-label" style="margin-top:8px;">sin radio (hero / galería full-bleed)</span>
+            </div>
+            <div style="text-align:center;">
+                <img src="https://santyyy03.github.io/Tp02Web/imagenes/hero/sillon_detalle.webp" style="width:100%; height:140px; object-fit:cover; border-radius:16px;">
+                <span class="kit-label" style="margin-top:8px;">--radius-sm (badges / viewers)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                        UTILIDADES & HOVERS
+    ============================================================= -->
+    <section id="utilidades" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Utilidades &amp; estados hover</h2>
+                <p>Clases de comportamiento reutilizables. Pasá el mouse por cada caja: los hovers son los reales de <span class="kit-code">style.css</span>, no una simulación.</p>
+            </div>
+            <span class="kit-badge">Compartido</span>
+        </div>
+
+        <div class="kit-grid cols-4" style="margin-bottom:24px;">
+            <div class="kit-card hover-lift" style="text-align:center; cursor:pointer;">
+                <span class="kit-code">.hover-lift</span>
+                <p style="font-size:.8rem; opacity:.6; margin-top:8px;">translateY(-8px) + shadow-lg</p>
+            </div>
+            <div class="kit-card hover-scale" style="text-align:center; cursor:pointer;">
+                <span class="kit-code">.hover-scale</span>
+                <p style="font-size:.8rem; opacity:.6; margin-top:8px;">scale(1.03)</p>
+            </div>
+            <div class="kit-card glass" style="text-align:center; background:var(--color-dark); color:var(--color-light);">
+                <span class="kit-code">.glass</span>
+                <p style="font-size:.8rem; opacity:.7; margin-top:8px;">blur(22px) + borde claro</p>
+            </div>
+            <div class="kit-card glass-dark" style="text-align:center; color:var(--color-light);">
+                <span class="kit-code">.glass-dark</span>
+                <p style="font-size:.8rem; opacity:.7; margin-top:8px;">blur(22px) sobre fondo oscuro</p>
+            </div>
+        </div>
+
+        <span class="kit-label">Hover de botones (pasá el mouse)</span>
+        <div class="kit-demo left" style="margin-bottom:24px;">
+            <button class="button button-primary">button-primary → invierte a fondo accent3 / borde accent</button>
+            <button class="button button-secondary">button-secondary → fondo accent + texto dark</button>
+        </div>
+
+        <span class="kit-label">.work-card / .course-card — hover levanta imagen y muestra overlay (probar arriba en la sección Tarjetas)</span>
+        <span class="kit-label">.nav-link — subrayado animado <span class="kit-code">::after</span> en hover</span>
+        <div class="kit-demo dark tight left">
+            <a href="#" class="nav-link">Concepto</a>
+            <a href="#" class="nav-link">Obras</a>
+            <a href="#" class="nav-link">Cursos</a>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                        HEADER + FOOTER
+    ============================================================= -->
+    <section id="navegacion" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Header &amp; footer</h2>
+                <p>Header fijo oscuro con logo + nav, idéntico en ambas páginas (cambian los anchors). Footer con marca, nav secundaria y redes.</p>
+            </div>
+            <span class="kit-badge">Compartido</span>
+        </div>
+
+        <span class="kit-label">.header (versión contenida, en el sitio real es position:fixed)</span>
+        <header class="header" style="position:relative; margin-bottom:32px; border-radius:16px;">
+            <div class="container">
+                <a href="#" class="logo">
+                    <img class="logoimagen" src="https://santyyy03.github.io/Tp02Web/imagenes/hero/marca.svg" alt="">
+                </a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="#" class="nav-link">Concepto</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Obras</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Cursos</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <span class="kit-label">.footer</span>
+        <footer class="footer" style="position:relative; border-radius:16px; overflow:hidden;">
+            <div class="container">
+                <div class="footer-brand">
+                    <h3 class="footer-logo">
+                        <img class="logoimagen2" src="https://santyyy03.github.io/Tp02Web/imagenes/hero/marca.svg" alt="">
+                    </h3>
+                    <p class="pfoot">Restauración de muebles con inspiración japonesa.</p>
+                </div>
+                <nav class="footer-nav">
+                    <a href="#" class="nav-link">Obras</a>
+                    <a href="#" class="nav-link">Cursos</a>
+                    <a href="#" class="nav-link">Contacto</a>
+                </nav>
+                <div class="footer-social">
+                    <a href="#">Instagram</a>
+                    <a href="#">Behance</a>
+                    <a href="#">Pinterest</a>
+                </div>
+                <div class="footer-legal"><small>© 2026 RAÍZ</small></div>
+            </div>
+        </footer>
+    </section>
+
+    <!-- ============================================================
+                                FAQ
+    ============================================================= -->
+    <section id="faq" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Acordeón FAQ</h2>
+                <p><span class="kit-code">.faq-item</span> con toggle por clase <span class="kit-code">.active</span>. Mismo componente en Home y Detalle, solo cambian las preguntas.</p>
+            </div>
+            <span class="kit-badge">Compartido</span>
+        </div>
+
+        <div class="faq-list kit-mini-card" style="max-width:640px;">
+            <article class="faq-item active">
+                <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('active')">
+                    <span>¿Cómo comienza un proyecto de restauración?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Todo comienza con una evaluación del estado del mueble, seguida por una propuesta personalizada.</p>
+                </div>
+            </article>
+            <article class="faq-item">
+                <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('active')">
+                    <span>¿Los cursos requieren experiencia previa?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Existen niveles para principiantes y para personas con experiencia previa.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                        SELECTOR DE MUEBLES / COLOR
+    ============================================================= -->
+    <section id="selector" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Selector de muebles / color</h2>
+                <p><span class="kit-code">.selector-item</span> y <span class="kit-code">.detail-style-btn</span>: botones que activan un cambio de imagen (ver detalle.js). Exclusivos de la página de Detalle.</p>
+            </div>
+            <span class="kit-badge detalle">Solo Detalle</span>
+        </div>
+
+        <span class="kit-label">.showcase-selector .selector-item</span>
+        <div class="showcase-selector kit-demo tight left" style="margin-bottom:24px;">
+            <button class="selector-item active" data-furniture="chair" onclick="document.querySelectorAll('#kit-selector .selector-item').forEach(b=>b.classList.remove('active')); this.classList.add('active')">
+                <img src="https://santyyy03.github.io/Tp02Web/imagenes/muebles/colores/banquito_mini.webp" alt="Silla">
+            </button>
+            <button class="selector-item" data-furniture="lamp">
+                <img src="https://santyyy03.github.io/Tp02Web/imagenes/muebles/colores/perchero_mini.webp" alt="Lámpara">
+            </button>
+            <button class="selector-item" data-furniture="table">
+                <img src="https://santyyy03.github.io/Tp02Web/imagenes/muebles/colores/mesita_mini.webp" alt="Mesa">
+            </button>
+        </div>
+
+        <span class="kit-label">.detail-style-btn (data-style="red|blue|green|default")</span>
+        <div class="kit-demo dark tight left">
+            <button class="detail-style-btn active" data-style="default">家具</button>
+            <button class="detail-style-btn" data-style="red" style="background:#562F2F;">赤</button>
+            <button class="detail-style-btn" data-style="blue" style="background:#2F4656;">青</button>
+            <button class="detail-style-btn" data-style="green" style="background:#35562F;">緑</button>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                            TIMELINE
+    ============================================================= -->
+    <section id="timeline" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Cronograma / Timeline</h2>
+                <p><span class="kit-code">.timeline-stop</span> + <span class="kit-code">.timeline-card</span> (flip front/back). Exclusivo de Detalle, documenta las 5 semanas del curso.</p>
+            </div>
+            <span class="kit-badge detalle">Solo Detalle</span>
+        </div>
+
+        <div class="timeline-stops kit-demo tight" style="margin-bottom:24px;">
+            <button class="timeline-stop active" data-step="1"><span class="feature-kanji2">一</span></button>
+            <button class="timeline-stop visited" data-step="2"><span class="feature-kanji2">二</span></button>
+            <button class="timeline-stop" data-step="3"><span class="feature-kanji2">三</span></button>
+            <button class="timeline-stop" data-step="4"><span class="feature-kanji2">四</span></button>
+            <button class="timeline-stop" data-step="5"><span class="feature-kanji2">五</span></button>
+        </div>
+
+        <div class="kit-demo tight">
+            <article class="timeline-card active kit-mini-card" style="height:220px;" data-card="1">
+                <div class="timeline-card-inner">
+                    <div class="timeline-front">
+                        <span class="timeline-week">Semana 1</span>
+                    </div>
+                    <div class="timeline-back">
+                        <h3>Preparación</h3>
+                        <p>Evaluación del mueble, lijado y preparación de la madera.</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                            BLOQUE DE COMPRA
+    ============================================================= -->
+    <section id="compra" class="kit-section">
+        <div class="kit-section-head">
+            <div>
+                <h2>Bloque de compra / inscripción</h2>
+                <p><span class="kit-code">.buy-card</span> combina <span class="kit-code">.buy-info</span> (con <span class="kit-code">.feature-card</span> grid) y <span class="kit-code">.buy-price</span>. Exclusivo de Detalle.</p>
+            </div>
+            <span class="kit-badge detalle">Solo Detalle</span>
+        </div>
+
+        <div class="buy-card kit-demo tight column" style="max-width:760px;">
+            <div class="buy-info">
+                <p class="section-tag" style="color:var(--color-dark);">Inscripción</p>
+                <h2 class="section-title2" style="font-size:2rem;">Reservá tu lugar</h2>
+                <p class="section-description" style="text-align:left; margin-top:8px;">Cupos reducidos para un seguimiento personalizado.</p>
+            </div>
+            <div class="buy-price" style="text-align:left;">
+                <h3>$75.000</h3>
+                <p class="section-description3">o 3 cuotas sin interés</p>
+                <a href="#" class="button button-secondary">Inscribirme</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+</div>
+
+<script>
+// Flip demo card interactions reusan el mismo patrón de clase que script.js / detalle.js
+document.querySelectorAll('#selector .selector-item, .showcase-selector .selector-item').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+        btn.parentElement.querySelectorAll('.selector-item').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+    });
+});
+
+document.querySelectorAll('.detail-style-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+        btn.parentElement.querySelectorAll('.detail-style-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+    });
+});
+</script>
+
+</body>
+</html>
